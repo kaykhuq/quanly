@@ -110,7 +110,7 @@ class App extends Component {
     this.onShowForm();
   }
   onFilter = (filterName, filterStatus) => {
-    console.log(filterName, ' - ', filterStatus);
+    console.log(filterName, '-', filterStatus);
   }
   render() {
     var { tasks, isDisplayForm, taskEditing } = this.state;

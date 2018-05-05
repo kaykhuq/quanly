@@ -15,12 +15,12 @@ class TaskList extends Component {
         var name = target.name;
         var value = target.value;
 
-        
+        this.props.onFilter();
 
         this.setState({
             [name]: value
         })
-        this.props.onFilter(this.state.filterName,this.state.filterStatus);
+        
     }
     render() {
         var { tasks } = this.props;
