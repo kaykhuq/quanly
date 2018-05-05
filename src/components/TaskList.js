@@ -2,10 +2,29 @@ import React, { Component } from 'react';
 import TaskItem from './TaskItem';
 
 class TaskList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterName: '',
+            filterStatus: -1 // all:-1 , active :1 , deactive: 0
+        }
+    }
 
+    onhandleChange = (e) => {
+        var target = e.target;
+        var name = target.name;
+        var value = target.value;
 
+        
+
+        this.setState({
+            [name]: value
+        })
+        this.props.onFilter(this.state.filterName,this.state.filterStatus);
+    }
     render() {
         var { tasks } = this.props;
+        var { filterName, filterStatus } = this.state;
         var elemTask = tasks.map((task, index) => {
             return <TaskItem
                 key={task.id}
@@ -14,7 +33,7 @@ class TaskList extends Component {
                 onUpdateStatus={this.props.onUpdateStatus}
                 onDelete={this.props.onDelete}
                 onUpdate={this.props.onUpdate}
-                
+
             />
         })
         return (
@@ -37,12 +56,16 @@ class TaskList extends Component {
                                         type="text"
                                         className="form-control"
                                         name="filterName"
+                                        value={filterName}
+                                        onChange={this.onhandleChange}
                                     />
                                 </td>
                                 <td>
                                     <select
                                         className="form-control"
                                         name="filterStatus"
+                                        value={filterStatus}
+                                        onChange={this.onhandleChange}
                                     >
                                         <option value={-1}>Tất cả</option>
                                         <option value={0}>Ẩn</option>

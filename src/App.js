@@ -28,7 +28,7 @@ class App extends Component {
   onToggleForm = () => {
     if (this.state.isDisplayForm && this.state.taskEditing !== null) {
       this.setState({
-        
+
         taskEditing: null
       });
     } else {
@@ -109,6 +109,9 @@ class App extends Component {
     });
     this.onShowForm();
   }
+  onFilter = (filterName, filterStatus) => {
+    console.log(filterName, ' - ', filterStatus);
+  }
   render() {
     var { tasks, isDisplayForm, taskEditing } = this.state;
     var elemTaskForm = isDisplayForm ?
@@ -140,6 +143,7 @@ class App extends Component {
               onUpdateStatus={this.onUpdateStatus}
               onDelete={this.onDelete}
               onUpdate={this.onUpdate}
+              onFilter={this.onFilter}
             />
           </div>
         </div>
