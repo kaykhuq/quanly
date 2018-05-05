@@ -7,6 +7,7 @@ class TaskList extends Component {
         this.state = {
             filterName: '',
             filterStatus: -1 // all:-1 , active :1 , deactive: 0
+            
         }
     }
 
