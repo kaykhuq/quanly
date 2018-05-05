@@ -7,7 +7,7 @@ class TaskList extends Component {
         this.state = {
             filterName: '',
             filterStatus: -1 // all:-1 , active :1 , deactive: 0
-            
+
         }
     }
 
@@ -15,12 +15,16 @@ class TaskList extends Component {
         var target = e.target;
         var name = target.name;
         var value = target.value;
-
-        this.props.onFilter();
-
+        
+        this.props.onFilter(
+            name === 'filterName' ? value : this.state.filterName,
+            name === 'filterStatus' ? value : this.state.filterStatus,
+        );
+        
         this.setState({
             [name]: value
-        })
+        });
+
         
     }
     render() {
